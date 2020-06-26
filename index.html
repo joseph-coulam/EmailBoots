@@ -1,0 +1,927 @@
+<!-- In this example I'm using a hybrid email template based around the Cerberus build, with additional fixes put in place for specific clients -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta content="telephone=no,address=no,email=no,date=no,url=no" name="format-detection"> <!-- Tell iOS not to automatically link certain text strings. -->
+  <title>Joe Coulam, Job Application</title>
+  <!--[if mso]>
+          <xml>
+            <o:OfficeDocumentSettings>
+              <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+          </xml>
+          <style>
+            table {border-collapse: collapse;}
+            td,th,div,p,a {font-size: 16px; line-height: 26px;}
+            .spacer,.divider,div,p,a,h1,h2,h3,h4,h5,h6 {mso-line-height-rule: exactly;}
+            td,th,div,p,a,h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",Helvetica,Arial,sans-serif;}
+            a {text-decoration: none;}
+          </style>
+        <![endif]-->
+
+<!-- I use a mixture of custom CSS utility classes and inline code. An inline can be used if necessary -->
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=PT+Serif&family=Raleway&family=Source+Code+Pro&display=swap');
+
+    @media only screen {
+
+      .col,
+      td,
+      th,
+      div,
+      p {
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .serif {
+        font-family: 'PT Serif', Georgia, serif !important;
+        font-weight: 300 !important;
+      }
+
+      .sans-serif {
+        font-family: 'Raleway', Arial, sans-serif !important;
+      }
+
+      .mono {
+        font-family: 'Source Code Pro', Arial, sans-serif !important;
+      }
+    }
+
+    #outlook a {
+      padding: 0;
+    }
+
+    img {
+      border: 0;
+      line-height: 100%;
+      vertical-align: middle;
+    }
+
+    .col {
+      font-size: 16px;
+      line-height: 26px;
+      vertical-align: top;
+    }
+
+    @media only screen and (max-width: 730px) {
+      .wrapper img {
+        max-width: 100%;
+      }
+
+      u~div .wrapper {
+        min-width: 100vw;
+      }
+
+      .container {
+        width: 100% !important;
+        -webkit-text-size-adjust: 100%;
+      }
+    }
+
+    @media only screen and (max-width: 699px) {
+      .h1 {
+        font-size: 26px !important;
+        line-height: 30px !important;
+      }
+
+      .h2 {
+        font-size: 22px !important;
+        line-height: 26px !important;
+      }
+
+      .h3 {
+        font-size: 14px !important;
+        line-height: 22px !important;
+      }
+    }
+
+    @media only screen and (max-width: 699px) {
+      .col {
+        box-sizing: border-box;
+        display: inline-block !important;
+        line-height: 23px;
+        width: 100% !important;
+      }
+
+      .col-sm-1 {
+        max-width: 8.33333%;
+      }
+
+      .col-sm-2 {
+        max-width: 16.66667%;
+      }
+
+      .col-sm-3 {
+        max-width: 25%;
+      }
+
+      .col-sm-4 {
+        max-width: 33.33333%;
+      }
+
+      .col-sm-5 {
+        max-width: 41.66667%;
+      }
+
+      .col-sm-6 {
+        max-width: 50%;
+      }
+
+      .col-sm-7 {
+        max-width: 58.33333%;
+      }
+
+      .col-sm-8 {
+        max-width: 66.66667%;
+      }
+
+      .col-sm-9 {
+        max-width: 75%;
+      }
+
+      .col-sm-10 {
+        max-width: 83.33333%;
+      }
+
+      .col-sm-11 {
+        max-width: 91.66667%;
+      }
+
+      .col-sm-push-1 {
+        margin-left: 8.33333%;
+      }
+
+      .col-sm-push-2 {
+        margin-left: 16.66667%;
+      }
+
+      .col-sm-push-3 {
+        margin-left: 25%;
+      }
+
+      .col-sm-push-4 {
+        margin-left: 33.33333%;
+      }
+
+      .col-sm-push-5 {
+        margin-left: 41.66667%;
+      }
+
+      .col-sm-push-6 {
+        margin-left: 50%;
+      }
+
+      .col-sm-push-7 {
+        margin-left: 58.33333%;
+      }
+
+      .col-sm-push-8 {
+        margin-left: 66.66667%;
+      }
+
+      .col-sm-push-9 {
+        margin-left: 75%;
+      }
+
+      .col-sm-push-10 {
+        margin-left: 83.33333%;
+      }
+
+      .col-sm-push-11 {
+        margin-left: 91.66667%;
+      }
+
+      .full-width-sm {
+        display: table !important;
+        width: 100% !important;
+      }
+
+      .stack-sm-first {
+        display: table-header-group !important;
+      }
+
+      .stack-sm-last {
+        display: table-footer-group !important;
+      }
+
+      .stack-sm-top {
+        display: table-caption !important;
+        max-width: 100%;
+        padding-left: 0 !important;
+      }
+
+      .toggle-content {
+        max-height: 0;
+        overflow: auto;
+        transition: max-height .4s linear;
+        -webkit-transition: max-height .4s linear;
+      }
+
+      .toggle-trigger:hover+.toggle-content,
+      .toggle-content:hover {
+        max-height: 999px !important;
+      }
+
+      .show-sm {
+        display: inherit !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        max-height: none !important;
+      }
+
+      .hide-sm {
+        display: none !important;
+      }
+
+      .align-sm-center {
+        display: table !important;
+        float: none;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .bgImg {
+        height: auto !important;
+        background: none !important;
+      }
+
+      .align-sm-left {
+        float: left;
+      }
+
+      .align-sm-right {
+        float: right;
+      }
+
+      .text-sm-center {
+        text-align: center !important;
+      }
+
+      .text-sm-left {
+        text-align: left !important;
+      }
+
+      .text-sm-right {
+        text-align: right !important;
+      }
+
+      .borderless-sm {
+        border: none !important;
+      }
+
+      .nav-sm-vertical .nav-item {
+        display: block;
+      }
+
+      .nav-sm-vertical .nav-item a {
+        display: inline-block;
+        padding: 4px 0 !important;
+      }
+
+      .spacer {
+        height: 0;
+      }
+
+      .p-sm-0 {
+        padding: 0 !important;
+      }
+
+      .p-sm-10 {
+        padding: 10px !important;
+      }
+
+      .p-sm-20 {
+        padding: 20px !important;
+      }
+
+      .p-sm-30 {
+        padding: 30px !important;
+      }
+
+      .p-sm-40 {
+        padding: 40px !important;
+      }
+
+      .p-sm-50 {
+        padding: 50px !important;
+      }
+
+      .pt-sm-0 {
+        padding-top: 0 !important;
+      }
+
+      .pt-sm-10 {
+        padding-top: 10px !important;
+      }
+
+      .pt-sm-20 {
+        padding-top: 20px !important;
+      }
+
+      .pt-sm-30 {
+        padding-top: 30px !important;
+      }
+
+      .pt-sm-40 {
+        padding-top: 40px !important;
+      }
+
+      .pt-sm-50 {
+        padding-top: 50px !important;
+      }
+
+      .pr-sm-0 {
+        padding-right: 0 !important;
+      }
+
+      .pr-sm-10 {
+        padding-right: 10px !important;
+      }
+
+      .pr-sm-20 {
+        padding-right: 20px !important;
+      }
+
+      .pr-sm-30 {
+        padding-right: 30px !important;
+      }
+
+      .pr-sm-40 {
+        padding-right: 40px !important;
+      }
+
+      .pr-sm-50 {
+        padding-right: 50px !important;
+      }
+
+      .pb-sm-0 {
+        padding-bottom: 0 !important;
+      }
+
+      .pb-sm-10 {
+        padding-bottom: 10px !important;
+      }
+
+      .pb-sm-20 {
+        padding-bottom: 20px !important;
+      }
+
+      .pb-sm-30 {
+        padding-bottom: 30px !important;
+      }
+
+      .pb-sm-40 {
+        padding-bottom: 40px !important;
+      }
+
+      .pb-sm-50 {
+        padding-bottom: 50px !important;
+      }
+
+      .pl-sm-0 {
+        padding-left: 0 !important;
+      }
+
+      .pl-sm-10 {
+        padding-left: 10px !important;
+      }
+
+      .pl-sm-20 {
+        padding-left: 20px !important;
+      }
+
+      .pl-sm-30 {
+        padding-left: 30px !important;
+      }
+
+      .pl-sm-40 {
+        padding-left: 40px !important;
+      }
+
+      .pl-sm-50 {
+        padding-left: 50px !important;
+      }
+
+      .px-sm-0 {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+      }
+
+      .px-sm-10 {
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+      }
+
+      .px-sm-20 {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+      }
+
+      .px-sm-30 {
+        padding-right: 30px !important;
+        padding-left: 30px !important;
+      }
+
+      .px-sm-40 {
+        padding-right: 40px !important;
+        padding-left: 40px !important;
+      }
+
+      .px-sm-50 {
+        padding-right: 50px !important;
+        padding-left: 50px !important;
+      }
+
+      .py-sm-0 {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+
+      .py-sm-10 {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+      }
+
+      .py-sm-20 {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+      }
+
+      .py-sm-30 {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+      }
+
+      .py-sm-40 {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+      }
+
+      .py-sm-50 {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+      }
+    }
+
+  </style>
+  <style type="text/css">
+    /*add custom css here*/
+
+  </style>
+</head>
+
+<body style="box-sizing:border-box;margin:0;padding:0;width:100%;word-break:break-word;-webkit-font-smoothing:antialiased;">
+  <!-- Visually Hidden Preheader Text : BEGIN -->
+  <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">Hi, I’m Joe, I’m a developer with over 8 years of experience, and I’m applying for your Senior Email / HTML Technical Producer job at Boots!</div> <!-- Visually Hidden Preheader Text : END -->
+  <!-- Preview Text Spacing Hack : BEGIN -->
+  <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;"> &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp; </div> <!-- Preview Text Spacing Hack : END -->
+  <table cellpadding="0" cellspacing="0" class="wrapper" role="presentation" width="100%">
+
+
+    <!-- Outer TD Wrapper -->
+    <tr>
+      <td align="center" bgcolor="#FDF0ED">
+
+    
+        <!-- I try to keep each component seperate, making it easy to integrate into templating engines like Stripo or Hubspot if necessary -->
+        <!-- It also helps seperate the email out into managable chunks! -->
+
+        <!-- HEADER -->
+        <!-- This is a Component Wrapper, I'll usually put an all-caps naming convension for component names -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" align="center" bgcolor="#122048" style="background-color: #122048;">
+            <tr>
+                <td valign="top" align="center" style="padding: 60px 0; text-align: center;" class=" ">
+
+                    <!-- This is the Inner Component Wrapper with MSO ghost tables -->
+                    <div style="max-width: 700px; margin: auto; background-color:transparent;" class="email-container">
+                        <!--[if mso]>
+                        <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="700" >
+                        <tr>
+                        <td>
+                        <![endif]-->
+
+                            <!-- This inner wrapper allows widths for inner content, and additional styling on the table -->
+                            <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+                            <tr>
+                                <td align="center">
+                                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                                    <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                                    <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                                        <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+
+                                            <!-- This is the main gubs for the component, we can put multiple table rows in here to seperate the content out -->
+                                            <tr>
+                                                <td style="text-align: left; padding: 0px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                                <p class="serif h1" style="color: #ffffff; text-align: left; margin: 0px 0px 20px; font-size: 32px; mso-line-height: exactly; line-height: 48px; font-weight: 300;">Hi, I’m Joe, I’m a developer with over 8 years of experience, and I’m applying for your <span style="text-decoration: underline; color: #FFCEBF">Senior Email / HTML Technical Producer</span> job at <span style="color: #FFCEBF">Boots</span>!</p>
+                                                <p class="mono" style="font-size: 14px; mso-line-height: exactly; line-height: 22px; text-align: left; margin: 10px 0; font-weight: 400; color:#FFFFFF">This CV has been built as en email, you can see the litmus tests <span style="text-decoration: underline;">here</span>, or <span style="text-decoration: underline;">look at the source code on Github</span>.</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </th>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </div>
+                </td>
+            </tr>
+        </table> 
+
+        <!-- BIOGRAPHY -->
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px; padding-top: 50px;">
+            <tr class="full-width-sm" style="vertical-align: top;" valign="top">
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="390">
+                <!-- BIOGRAPHY TABLE - LEFT -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-center" align="center">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="serif h1" style="color: #000000; text-align: left; margin: 20px 0px; font-size: 32px; mso-line-height: exactly; line-height: 48px; font-weight: 300;">Biography</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 20px; font-weight: 400; color:#000000">After graduating in 2008 with a first in Interactive Media, I found a genuine interest in both digital design and development. Over the last 8 years, I’ve been involved in digital marketing, SEO campaigns, websites and email development.</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px; font-weight: 400; color:#000000">I’m now looking to join another established company to help develop <span style="text-decoration: underline;">modern</span> & <span style="text-decoration: underline;">beautiful</span> digital products.</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+              <th style="text-align: center; padding: 0px 30px 10px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="190">
+                <!-- TOOLS & EXPERIENCE - RIGHT -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-center" align="center">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 28px; text-align: left; margin: 30px 0px 10px; font-weight: 700; color:#000000">Tools & Experience</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 24px; text-align: left; margin: 0px; font-weight: 400; color:#000000"><span style="font-weight: 700;">Email:</span> HTML, CSS, Litmus</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 24px; text-align: left; margin: 0px; font-weight: 400; color:#000000"><span style="font-weight: 700;">Design:</span> Adobe XD, Photoshop, Illustrator, Sketch, Figma</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 24px; text-align: left; margin: 0px; font-weight: 400; color:#000000"><span style="font-weight: 700;">Front End:</span> VSCode, NPM / Yarn, ES6 Javascript, Vue.js, React, SCSS, TailwindCSS </p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 24px; text-align: left; margin: 0px; font-weight: 400; color:#000000"><span style="font-weight: 700;">Backend:</span> Wordpress, PHP, Node, Strapi, Webpack, Gulp, Github</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+        </table>
+
+        <!-- HR -->
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+                <td align="left" valign="top" width="600px" height="1" style="background-color: #333333; border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+            </tr>
+        </table>
+
+        <!-- Biography -->
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                          <td style="text-align: left; padding: 0px 30px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                            <p class="serif h1" style="color: #000000; text-align: left; margin: 0px 0px 40px; font-size: 32px; mso-line-height: exactly; line-height: 48px; font-weight: 300;">Experience</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px; margin-bottom: 50px;">
+            <tr class="full-width-sm" style="vertical-align: top;" valign="top">
+              <th style="text-align: left; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="150">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 28px; text-align: left; margin: 5px 0px 0px; font-weight: 700; color:#000000">Online Mortgage Advisor</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 20px; text-align: left; margin: 0px; font-weight: 400; color:#000000">Jan 2020 - Current</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 20px; text-align: left; margin: 0px; font-weight: 400; color:#000000">Derby</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="430">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="serif h1" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 26px; mso-line-height: exactly; line-height: 38px; font-weight: 300;">Lead Designer & Developer</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 28px; text-align: left; margin: 0px 0px 0px; font-weight: 400; color:#000000">I’m currently the sole developer and designer for <a href="https://onlinemortgageadvisor.co.uk/" target="_blank" style="text-decoration: underline; color: #000000;">OnlineMortgageAdvisor</a>. Here I’ve been working on SEO campaigns, email campaigns, Website improvements and conversion rate optimisation using Google Optimize. We’re currently working on improving the overall aesthetic of the brand and website.</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px; margin-bottom: 50px;">
+            <tr class="full-width-sm" style="vertical-align: top;" valign="top">
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="150">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 28px; text-align: left; margin: 5px 0px 0px; font-weight: 700; color:#000000">Hillarys</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 20px; text-align: left; margin: 0px; font-weight: 400; color:#000000">Jan 2020 - Current. Colwick, Nottingham</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="430">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="serif h1" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 26px; mso-line-height: exactly; line-height: 38px; font-weight: 300;">Lead Designer & Developer</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 20px; font-weight: 400; color:#000000">I was promoted to Digital lead in 2018, where I started becoming more involved in the campaign process. I worked on some exciting projects, including our partnership with <a href="https://onlinemortgageadvisor.co.uk/" target="_blank" style="text-decoration: underline; color: #000000;">Channel 4</a>, <a href="https://www.hillarys.co.uk/static/mercury-collection-teaser/" target="_blank" style="text-decoration: underline; color: #000000;">new product launches</a>, and some of our most successful SEO campaigns to date.</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 20px; font-weight: 400; color:#000000">In 2019 I worked with <a href="https://www.cheetahdigital.com/" target="_blank" style="text-decoration: underline; color: #000000;">Cheetah Digital</a> along side our email CRM executive to create interactive and dynamic components for our emails. We wanted to create a unique personalisation across our campaigns for our customers. Before I left the company I successfully integrated these new components into our template, and helped our team use them. </p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 0px; font-weight: 400; color:#000000">During this time I also managed four digital designers, who were essential to ensuring we met tight deadlines.</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+        </table>
+
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px; margin-bottom: 50px;">
+            <tr class="full-width-sm" style="vertical-align: top;" valign="top">
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="150">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 28px; text-align: left; margin: 5px 0px 0px; font-weight: 700; color:#000000">Hillarys</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 20px; text-align: left; margin: 0px; font-weight: 400; color:#000000">Jan 2020 - Current. Colwick, Nottingham</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="430">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="serif h1" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 26px; mso-line-height: exactly; line-height: 38px; font-weight: 300;">Digital Designer</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 20px; font-weight: 400; color:#000000">I started at Hillarys as a digital designer, working on maintaining assets, and developing emails. My manager quickly realised I had a strong background in development, and we started establishing an in-house development presence, working closely with our agency, <a href="https://www.codecomputerlove.com/" target="_blank" style="text-decoration: underline; color: #000000;">Code</a>, in Manchester. </p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 0px; font-weight: 400; color:#000000">One of my first development projects involved converting the Hillarys Flash display adverts into HTML5, and making them dynamic for retargeting and prospecting. Hillarys are still using this technology.</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+        </table>
+
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px; margin-bottom: 20px;">
+            <tr class="full-width-sm" style="vertical-align: top;" valign="top">
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="150">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 28px; text-align: left; margin: 5px 0px 0px; font-weight: 700; color:#000000">Screenreach Interactive</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 20px; text-align: left; margin: 0px; font-weight: 400; color:#000000">Jan 2020 - Current</p>
+                        <p class="mono" style="font-size: 12px; mso-line-height: exactly; line-height: 20px; text-align: left; margin: 0px; font-weight: 400; color:#000000">Newcastle.</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+              <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: top;" bgcolor="transparent" class="col" height="auto" width="430">
+                <!-- Inner Table added for padding around content -->
+                <table cellpadding="0" cellspacing="0" role="presentation" class="align-sm-left" align="left">
+                  <tr>
+                    <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                        <p class="serif h1" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 26px; mso-line-height: exactly; line-height: 38px; font-weight: 300;">Junior Developer</p>
+                        <p class="sans-serif" style="font-size: 16px; mso-line-height: exactly; line-height: 30px; text-align: left; margin: 0px 0px 0px; font-weight: 400; color:#000000">Immediately after graduating, I joined <a href="https://www.screach.com/" target="_blank" style="text-decoration: underline; color: #000000;">Screenreach</a>, a digital company in Newcastle. We specialised in creating phone to screen interactive technology. During this time, I created phone and TV applications using their development kit.</p>
+                    </td>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+        </table>
+
+        
+        <!-- HR -->
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+                <td align="left" valign="top" width="600px" height="1" style="background-color: #333333; border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+            </tr>
+        </table>
+        
+        <!-- Biography -->
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                          <td style="text-align: left; padding: 0px 30px 0px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                            <p class="serif h1" style="color: #000000; text-align: left; margin: 0px; font-size: 32px; mso-line-height: exactly; line-height: 48px; font-weight: 300;">Case Studies</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+
+
+         <!-- Biography -->
+         <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                            <td style="text-align: center; padding: 50px 30px 20px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                <h2 class="text-sm-left serif" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 22px; mso-line-height: exactly; line-height: 100%; font-weight: 500;">OMA - Web Development</h2>
+                                <p class="sans-serif text-sm-left" style="color: #000000; text-align: left; font-weight: 400; font-size: 14px; mso-line-height: exactly; line-height: 22px; margin: 10px 0;">I've been working on improving the speed and conversion rate of the OMA site. Using Vue.js to develop a fast loading, modular website.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                                <img alt="Header Image" src="http://www.josephcoulam.com/boots-cv/block1.jpg" width="640" class="full-width-sm">
+                            </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                            <td style="text-align: center; padding: 50px 30px 20px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                <h2 class="text-sm-left serif" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 22px; mso-line-height: exactly; line-height: 100%; font-weight: 500;">Hillarys - Emails</h2>
+                                <p class="sans-serif text-sm-left" style="color: #000000; text-align: left; font-weight: 400; font-size: 14px; mso-line-height: exactly; line-height: 22px; margin: 10px 0;">I helped build the latest Hillarys email templates from the ground up; making huge improvements to accessibility, but also improving sales and engagement significantly.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                                <img alt="Header Image" src="http://www.josephcoulam.com/boots-cv/block2.jpg" width="640" class="full-width-sm">
+                            </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                            <td style="text-align: center; padding: 50px 30px 20px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                <h2 class="text-sm-left serif" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 22px; mso-line-height: exactly; line-height: 100%; font-weight: 500;">Hillarys - Channel 4</h2>
+                                <p class="sans-serif text-sm-left" style="color: #000000; text-align: left; font-weight: 400; font-size: 14px; mso-line-height: exactly; line-height: 22px; margin: 10px 0;">I helped create several campaigns around the launch of our sponsorship with Channel 4. For example, an interactive Pinterest quiz which generated Hillarys themed Pinterest boards.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                                <img alt="Header Image" src="http://www.josephcoulam.com/boots-cv/block3.jpg" width="640" class="full-width-sm">
+                            </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                            <td style="text-align: center; padding: 50px 30px 20px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                <h2 class="text-sm-left serif" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 22px; mso-line-height: exactly; line-height: 100%; font-weight: 500;">Hillarys - SEO campaigns</h2>
+                                <p class="sans-serif text-sm-left" style="color: #000000; text-align: left; font-weight: 400; font-size: 14px; mso-line-height: exactly; line-height: 22px; margin: 10px 0;">Since joining Hillarys, I helped design and develop over 50 link building campaigns which generated hundreds of organic links, helping improve Hillarys' organic traffic.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                                <img alt="Header Image" src="http://www.josephcoulam.com/boots-cv/block4.jpg" width="640" class="full-width-sm">
+                            </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+        <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+            <tr>
+              <td align="center" bgcolor="transparent">
+                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                  <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                    <th bgcolor="transparent" style="text-align: center; padding: 0px 0px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                      <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                        <tr>
+                            <td style="text-align: center; padding: 50px 30px 20px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                <h2 class="text-sm-left serif" style="color: #000000; text-align: left; margin: 0px 0px 10px; font-size: 22px; mso-line-height: exactly; line-height: 100%; font-weight: 500;">Hillarys - Design Sprints</h2>
+                                <p class="sans-serif text-sm-left" style="color: #000000; text-align: left; font-weight: 400; font-size: 14px; mso-line-height: exactly; line-height: 22px; margin: 10px 0;">I'm always looking to improve the methodology in which design and development is created. I helped introduce design sprints to the Hillarys workflow; improving communication and engagement for the team.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 0px; height:auto;" class="px-sm-0 py-sm-0" height="auto">
+                                <img alt="Header Image" src="http://www.josephcoulam.com/boots-cv/block5.jpg" width="640" class="full-width-sm">
+                            </td>
+                        </tr>
+                      </table>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+        </table>
+
+
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" align="center" bgcolor="#122048" style="background-color: #122048;">
+            <tr>
+                <td valign="top" align="center" style=" padding: 60px 0; text-align: center;" class=" ">
+        
+                    <div style="max-width: 700px; margin: auto; background-color:transparent;" class="email-container">
+                        <!--[if mso]>
+                        <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" width="700" >
+                        <tr>
+                        <td>
+                        <![endif]-->
+                            <table cellpadding="0" cellspacing="0" class="container" role="presentation" width="700" style="width:700px;">
+                            <tr>
+                                <td align="center">
+                                <table cellpadding="0" cellspacing="0" class="row" role="presentation" width="100%">
+                                    <tr class="full-width-sm" style="vertical-align: middle;" valign="middle">
+                                    <th style="text-align: center; padding: 0px 30px; height:auto; vertical-align: middle;" class="col" height="auto" width="700">
+                                        <table cellpadding="0" cellspacing="0" class="align-sm-left" role="presentation" align="left">
+                                            <tr>
+                                                <td style="text-align: left; padding: 0px; height:auto;" class="py-sm-30 px-sm-30" height="auto">
+                                                <p class="serif h1" style="color: #ffffff; text-align: left; margin: 0px 0px 20px; font-size: 32px; mso-line-height: exactly; line-height: 48px; font-weight: 300;">If you want to get in touch, I'd love to chat! Please get in touch: <span style="text-decoration: underline; color: #FFCEBF">josephcoulam@gmail.com</span></p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </th>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            </table>
+                        <!--[if mso]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                    </div>
+                </td>
+            </tr>
+        </table> 
+
+
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
